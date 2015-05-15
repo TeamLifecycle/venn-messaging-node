@@ -2,6 +2,8 @@ var assert = require("assert")
 var nock = require("nock")
 var client = require("../../../lib/index").SMS;
 var MessagingUserStatus = require('../../../lib/models/messaging_user_status');
+var MessagingServiceStatus = require('../../../lib/models/messaging_service_status');
+var StatusCodes = (new MessagingServiceStatus()).StatusCodes;
 var UserCodes = (new MessagingUserStatus()).StatusCodes;
 
 describe('receive error from twilio', function () {
@@ -101,6 +103,30 @@ describe('receive error from twilio', function () {
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
 			assert.equal(err.code, UserCodes.INVALID);
+			done()
+		})
+	})
+
+	it("when from number is formatted correctly but isn't a valid twilio number associated with your account", function (done) {
+		nock.cleanAll();
+		nock('https://api.getvenn.io/v1')
+			.get('/keys/sms')
+			.reply(200, {
+				"twilio": {
+					"account_sid": "sldkfjdslkjf",
+					"auth_token": "sldkfjdslkjf"
+				}
+			});
+		nock('https://api.twilio.com:443')
+			.post('/2010-04-01/Accounts/sldkfjdslkjf/Messages.json')
+			.reply(401, {'status': 401, 'message': "'From' phone number not verified", 'code': 21210, 'moreInfo': 'https://www.twilio.com/docs/errors/21210'});
+		nock('https://api.getvenn.io/v1')
+			.get('/priority/sms')
+			.reply(200, [ "twilio"]);
+
+		client.initialize();
+		client.send({to:"15135549122", from: "12345678900", message:"message-13579"}, function(err, result){
+			assert.equal(this.sendLog[0].code, StatusCodes.DATA_REJECTED);
 			done()
 		})
 	})
