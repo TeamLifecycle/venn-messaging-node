@@ -23,7 +23,9 @@ describe('email services should provide feedback when user exceeds sending limit
 			.reply(200, ["sendgrid"]);
 		emailClient.initialize()
 		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
-			assert.equal(this.sendLog[0].code, StatusCode.LIMIT_EXCEEDED);
+			assert.notEqual(err, undefined);
+			assert.equal(result, undefined);
+			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
 			done()
 		})
 	})
@@ -46,7 +48,9 @@ describe('email services should provide feedback when user exceeds sending limit
 			.reply(200, ["mailgun"]);
 		emailClient.initialize()
 		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
-			assert.equal(this.sendLog[0].code, StatusCode.LIMIT_EXCEEDED);
+			assert.notEqual(err, undefined);
+			assert.equal(result, undefined);
+			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
 			done()
 		})
 	})
@@ -67,7 +71,9 @@ describe('email services should provide feedback when user exceeds sending limit
 			.reply(200, ["mandrill"]);
 		emailClient.initialize()
 		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
-			assert.equal(this.sendLog[0].code, StatusCode.LIMIT_EXCEEDED);
+			assert.notEqual(err, undefined);
+			assert.equal(result, undefined);
+			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
 			done()
 		})
 	})
@@ -88,7 +94,9 @@ describe('email services should provide feedback when user exceeds sending limit
 			.reply(200, ["postmark"]);
 		emailClient.initialize()
 		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
-			assert.equal(this.sendLog[0].code, StatusCode.LIMIT_EXCEEDED);
+			assert.notEqual(err, undefined);
+			assert.equal(result, undefined);
+			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
 			done()
 		})
 	})
