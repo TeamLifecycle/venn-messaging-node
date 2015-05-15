@@ -119,7 +119,7 @@ describe('receive error from twilio', function () {
 			});
 		nock('https://api.twilio.com:443')
 			.post('/2010-04-01/Accounts/sldkfjdslkjf/Messages.json')
-			.reply(401, {'status': 401, 'message': "'From' phone number not verified", 'code': 21210, 'moreInfo': 'https://www.twilio.com/docs/errors/21210'});
+			.reply(401, {'status': 401, 'message': "'From' phone number not verified", 'code': 21606, 'moreInfo': 'https://www.twilio.com/docs/errors/21606'});
 		nock('https://api.getvenn.io/v1')
 			.get('/priority/sms')
 			.reply(200, [ "twilio"]);
