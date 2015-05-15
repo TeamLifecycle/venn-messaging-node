@@ -132,4 +132,56 @@ describe('receive error from twilio', function () {
 			done()
 		})
 	})
+
+	it('when to number is formatted correctly but has an invalid area code', function (done) {
+		nock.cleanAll();
+		nock('https://api.getvenn.io/v1')
+			.get('/keys/sms')
+			.reply(200, {
+				"twilio": {
+					"account_sid": "sldkfjdslkjf",
+					"auth_token": "sldkfjdslkjf"
+				}
+			});
+		nock('https://api.twilio.com:443')
+			.post('/2010-04-01/Accounts/sldkfjdslkjf/Messages.json')
+			.reply(401, {'status': 401, 'message': "'To' phone number has invalid area code", 'code': 21211, 'moreInfo': 'https://www.twilio.com/docs/errors/21211'});
+		nock('https://api.getvenn.io/v1')
+			.get('/priority/sms')
+			.reply(200, [ "twilio"]);
+
+		client.initialize();
+		client.send({to:"10142849070", from: "15135549122", message:"message-13579"}, function(err, result){
+			assert.notEqual(err, undefined);
+			assert.equal(result, undefined);
+			assert.equal(err[0].code, StatusCodes.DATA_REJECTED);
+			done()
+		})
+	})
+
+	it('when to number is formatted correctly but has an invalid main number', function (done) {
+		nock.cleanAll();
+		nock('https://api.getvenn.io/v1')
+			.get('/keys/sms')
+			.reply(200, {
+				"twilio": {
+					"account_sid": "sldkfjdslkjf",
+					"auth_token": "sldkfjdslkjf"
+				}
+			});
+		nock('https://api.twilio.com:443')
+			.post('/2010-04-01/Accounts/sldkfjdslkjf/Messages.json')
+			.reply(401, {'status': 401, 'message': "'To' phone number has invalid main number", 'code': 21211, 'moreInfo': 'https://www.twilio.com/docs/errors/21211'});
+		nock('https://api.getvenn.io/v1')
+			.get('/priority/sms')
+			.reply(200, [ "twilio"]);
+
+		client.initialize();
+		client.send({to:"10142849070", from: "15135549122", message:"message-13579"}, function(err, result){
+			assert.notEqual(err, undefined);
+			assert.equal(result, undefined);
+			assert.equal(err[0].code, StatusCodes.DATA_REJECTED);
+			done()
+		})
+	})
 })
