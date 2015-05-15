@@ -126,7 +126,9 @@ describe('receive error from twilio', function () {
 
 		client.initialize();
 		client.send({to:"15135549122", from: "12345678900", message:"message-13579"}, function(err, result){
-			assert.equal(this.sendLog[0].code, StatusCodes.DATA_REJECTED);
+			assert.notEqual(err, undefined);
+			assert.equal(result, undefined);
+			assert.equal(err[0].code, StatusCodes.DATA_REJECTED);
 			done()
 		})
 	})
