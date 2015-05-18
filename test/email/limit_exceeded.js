@@ -77,27 +77,4 @@ describe('email services should provide feedback when user exceeds sending limit
 			done()
 		})
 	})
-
-	it('should catch a limit exceeded error from Postmark', function(done) {
-		nock('https://api.getvenn.io/v1')
-			.get('/keys/email')
-			.reply(200, {
-			"postmark": {
-				"server_key": "123"
-			}
-		});
-		nock('https://api.postmarkapp.com').filteringRequestBody(/.*/, '*')
-			.post('/email')
-			.reply(422, {"ErrorCode": 405, "Message": "Some explanation."} );
-		nock('https://api.getvenn.io/v1')
-			.get('/priority/email')
-			.reply(200, ["postmark"]);
-		emailClient.initialize()
-		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
-			assert.notEqual(err, undefined);
-			assert.equal(result, undefined);
-			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
-			done()
-		})
-	})
 })

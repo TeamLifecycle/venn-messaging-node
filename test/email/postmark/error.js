@@ -1,6 +1,5 @@
 var nock = require("nock")
 var assert = require("assert")
-var should = require("chai").should()
 var client = require("../../../lib/index").Email;
 var MessagingServiceStatus = require('../../../lib/models/messaging_service_status');
 var StatusCode = (new MessagingServiceStatus()).StatusCodes;
@@ -63,6 +62,21 @@ describe('Postmark errors', function () {
 			assert.equal(err[0].code, StatusCode.DATA_REJECTED);
 			assert.equal(err[0].service, 'postmark');
 			assert.equal(err[0].message, '401: Sender signature not confirmed');
+			done()
+		})
+	})
+
+	it('should catch a limit exceeded error', function (done) {
+		nock('https://api.postmarkapp.com').filteringRequestBody(/.*/, '*')
+			.post('/email')
+			.reply(422, {"ErrorCode": 405, "Message": "Not allowed to send"} );
+		client.initialize()
+		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
+			assert.notEqual(err, undefined);
+			assert.equal(result, undefined);
+			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
+			assert.equal(err[0].service, 'postmark');
+			assert.equal(err[0].message, '405: Not allowed to send');
 			done()
 		})
 	})
