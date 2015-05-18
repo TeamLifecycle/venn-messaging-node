@@ -54,27 +54,4 @@ describe('email services should provide feedback when user exceeds sending limit
 			done()
 		})
 	})
-
-	it('should catch a limit exceeded error from Mandrill', function(done) {
-		nock('https://api.getvenn.io/v1')
-			.get('/keys/email')
-			.reply(200, {
-			"mandrill": {
-				"api_key": 'key'
-			}
-		});
-		nock('https://mandrillapp.com/api/1.0')
-			.post('/messages/send.json')
-			.reply(400, {"status": "error", "code": 11, "name": "PaymentRequired", "message": "Some message."});
-		nock('https://api.getvenn.io/v1')
-			.get('/priority/email')
-			.reply(200, ["mandrill"]);
-		emailClient.initialize()
-		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
-			assert.notEqual(err, undefined);
-			assert.equal(result, undefined);
-			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
-			done()
-		})
-	})
 })
