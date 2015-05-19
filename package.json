@@ -24,6 +24,7 @@
     "mandrill-api": "^1.0.41",
     "messagebus": "^5.0.0",
     "node-parse-api": "^0.3.5",
+    "plivo-node": "^0.2.5",
     "postmark": "^1.0.0",
     "promise": "^6.1.0",
     "pushwoosh-client": "^1.0.2",

@@ -89,14 +89,13 @@ VENN_API_KEY="h41fa6602663b30c78b9c339" node examples/example.js
 
 ##### Run Example (with debug logging)
 ```
-export VENN_API_KEY=""
-DEBUG=email node examples/example.js
+VENN_API_KEY=5f6abf85d1947ce29ce7332f VENN_API_URL=http://localhost:3400/v1 DEBUG=venn node examples/sms.js
 ```
 
 ##### Run Tests
 ###### Export api keys
 ```bash
-VENN_API_KEY="" mocha
+mocha
 ```
 
 
