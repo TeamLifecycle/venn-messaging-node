@@ -29,29 +29,4 @@ describe('email services should provide feedback when user exceeds sending limit
 			done()
 		})
 	})
-
-	it('should catch a limit exceeded error from Mailgun', function(done) {
-		nock('https://api.getvenn.io/v1')
-			.get('/keys/email')
-			.reply(200, {
-			"mailgun": {
-				"api_key": 'key',
-				"domain": 'domain'
-			}
-		});
-		nock('https://api.mailgun.net')
-			.filteringPath(function(path) { return '/'; })
-			.post('/')
-			.reply(400, {'message': 'Message limit reached.'});
-		nock('https://api.getvenn.io/v1')
-			.get('/priority/email')
-			.reply(200, ["mailgun"]);
-		emailClient.initialize()
-		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
-			assert.notEqual(err, undefined);
-			assert.equal(result, undefined);
-			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
-			done()
-		})
-	})
 })
