@@ -155,7 +155,7 @@ mocha
   2. Add the newly created service provider to `initServices`
   ``` javascript
   else if (property === "service_name" && keys[property]) {
-  	messagingProvider = new ServiceName(keys[property])
+  	messagingProvider = new ServiceName(keys[property]);
   }
   ```
 4. Add api key validator to Venn API
