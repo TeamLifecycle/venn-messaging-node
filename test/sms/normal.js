@@ -57,14 +57,14 @@ describe('when sms services up', function(){
 				}
 			});
 		nock('https://rest.nexmo.com')
-			.post('/sms/json?from=15139453300&to=+15138853322&text=message-13579&api_key=nsldkfjdslkjf&api_secret=nsldkfjdslkjf')
+			.post('/sms/json?from=15139453300&to=15138853322&text=message-13579&api_key=nsldkfjdslkjf&api_secret=nsldkfjdslkjf')
 			.reply(200, {"message": "success"});
 		nock('https://api.getvenn.io/v1')
 			.get('/priority/sms')
 			.reply(200, ["nexmo", "twilio"]);
 
 		client.initialize("test123")
-		client.send({from:"+15138853322", to:"+15138853322", message:"message-13579"}, function(err, result){
+		client.send({from:"15138853322", to:"15138853322", message:"message-13579"}, function(err, result){
 			assert.equal(result.service, "nexmo");
 			assert.equal(Object.keys(client.services).length, 2);
 			done()

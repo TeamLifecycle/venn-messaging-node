@@ -128,6 +128,8 @@ node examples/example.js
 
 ### Run Examples with Debugging
 ``` bash
+VENN_API_KEY=5f6abf85d1947ce29ce7332f
+VENN_API_URL=http://localhost:3400/v1
 DEBUG="venn"
 node examples/example.js
 ```

@@ -19,7 +19,7 @@ describe('when one doesnt have any services turned on', function(){
 			should.exist(err);
 			err.should.be.an('object');
 			should.not.exist(result);
-			err.message.should.equal("No integrations turned on! Turn some on in your Venn Dashboard!");
+			err.message.should.equal("No email integrations turned on! Turn some on in your Venn Dashboard!");
 			done();
 		})
 	})

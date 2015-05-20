@@ -1,6 +1,6 @@
 {
   "name": "venn-messaging",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "description": "Venn Messaging Redundancy Package, including Push Notifications, Email and SMS",
   "main": "lib/index.js",
   "scripts": {
@@ -24,6 +24,8 @@
     "mandrill-api": "^1.0.41",
     "messagebus": "^5.0.0",
     "node-parse-api": "^0.3.5",
+    "nzero-push": "^2.1.2",
+    "plivo-node": "^0.2.5",
     "postmark": "^1.0.0",
     "promise": "^6.1.0",
     "pushwoosh-client": "^1.0.2",
