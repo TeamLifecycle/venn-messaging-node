@@ -29,6 +29,7 @@ describe('Mandrill errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
 			assert.equal(err[0].service, 'mandrill');
 			assert.equal(err[0].message, 'PaymentRequired: The requested feature requires payment.');
@@ -44,6 +45,7 @@ describe('Mandrill errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.DATA_REJECTED);
 			assert.equal(err[0].service, 'mandrill');
 			assert.equal(err[0].message, 'ValidationError: The parameters passed to the API call are invalid or not provided when required ');
@@ -59,6 +61,7 @@ describe('Mandrill errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.SERVICE_DOWN);
 			assert.equal(err[0].service, 'mandrill');
 			assert.equal(err[0].message, 'GeneralError: An unexpected error occurred processing the request.');

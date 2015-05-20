@@ -33,6 +33,7 @@ describe('when sms services up', function(){
 
 			client.initialize()
 			client.send({to:"15138853322", message:"message-13579"}, function(err, result){
+				assert.notEqual(result, undefined);
 				assert.equal(result.service, "twilio");
 				assert.equal(Object.keys(client.services).length, 2);
 				done()
@@ -65,6 +66,7 @@ describe('when sms services up', function(){
 
 		client.initialize("test123")
 		client.send({from:"15138853322", to:"15138853322", message:"message-13579"}, function(err, result){
+			assert.notEqual(result, undefined);
 			assert.equal(result.service, "nexmo");
 			assert.equal(Object.keys(client.services).length, 2);
 			done()

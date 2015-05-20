@@ -26,6 +26,7 @@ describe('when push services up', function(){
 
 		client.initialize()
 		client.send({deviceToken:"12345", deviceType:"ios", message:"push message 29449"}, function(err, result){
+			assert.notEqual(result, undefined);
 			assert.equal(result.service, "parse");
 			assert.equal(Object.keys(client.services).length, 1);
 			done()

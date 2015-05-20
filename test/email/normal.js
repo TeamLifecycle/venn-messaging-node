@@ -29,6 +29,7 @@ describe('when email services up', function(){
 
 		emailClient.initialize()
 		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
+			assert.notEqual(result, undefined);
 			assert.equal(result.service, "mandrill");
 			assert.equal(Object.keys(emailClient.services).length, 2);
 			done()
@@ -58,6 +59,7 @@ describe('when email services up', function(){
 			.reply(200, [ "sendgrid", "mandrill" ]);
 		emailClient.initialize(process.env.VENN_API_KEY)
 		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
+			assert.notEqual(result, undefined);
 			assert.equal(result.service, "sendgrid");
 			done()
 		})
@@ -96,6 +98,7 @@ describe('when email services up', function(){
 			.reply(200, [ "mailgun", "mandrill" ]);
 		emailClient.initialize(process.env.VENN_API_KEY)
 		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
+			assert.notEqual(result, undefined);
 			assert.equal(result.service, "mailgun");
 			done()
 		})
@@ -125,6 +128,7 @@ describe('when email services up', function(){
 			.reply(200, [ "postmark", "messagebus" ]);
 		emailClient.initialize(process.env.VENN_API_KEY)
 		emailClient.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
+			assert.notEqual(result, undefined);
 			assert.equal(result.service, "postmark");
 			done()
 		})

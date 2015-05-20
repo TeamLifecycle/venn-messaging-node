@@ -12,6 +12,7 @@ describe('when push services up', function(){
 			should.exist(err);
 			should.not.exist(result);
 			err.code.should.equal(UserCodes.INVALID);
+			err.message.should.equal('Invalid device type: apple');
 			done()
 		})
 	})

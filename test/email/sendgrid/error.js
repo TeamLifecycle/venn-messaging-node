@@ -30,6 +30,7 @@ describe('Sendgrid errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
 			assert.equal(err[0].service, 'sendgrid');
 			assert.equal(err[0].message, 'Maximum credits exceeded');
@@ -45,6 +46,7 @@ describe('Sendgrid errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.SERVICE_DOWN);
 			assert.equal(err[0].service, 'sendgrid');
 			assert.equal(err[0].message, 'sendgrid error');
