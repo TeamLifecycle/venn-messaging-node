@@ -149,13 +149,13 @@ mocha
   4. Follow instructions in the template file to create the new service
 3. Edit `lib/models/messaging_client.js`
   1. Require the newly created service provider
-    ``` javascript
-    var ServiceName = require('./providers/service_type/service_name');
-    ```
+  ``` javascript
+  var ServiceName = require('./providers/service_type/service_name');
+  ```
   2. Add the newly created service provider to `initServices`
-	``` javascript
-    else if (property === "service_name" && keys[property]) {
-    	messagingProvider = new ServiceName(keys[property])
-    }
-    ```
+  ``` javascript
+  else if (property === "service_name" && keys[property]) {
+  	messagingProvider = new ServiceName(keys[property])
+  }
+  ```
 4. Add api key validator to Venn API
