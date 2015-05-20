@@ -32,29 +32,4 @@ describe('when push services up', function(){
 		})
 	})
 
-	it('should send with pushwoosh when suggested first', function(done){
-		nock.cleanAll()
-		nock('https://api.getvenn.io/v1')
-			.get('/keys/push')
-			.reply(200, {
-				"pushwoosh": {
-					"app_code": "a",
-					"auth_token": "b"
-				}
-			});
-		nock('https://cp.pushwoosh.com:443')
-			.post('/json/1.3/createMessage')
-			.reply(200, {status_code: 200} );
-		nock('https://api.getvenn.io/v1')
-			.get('/priority/push')
-			.reply(200, [ "pushwoosh"]);
-
-		client.initialize()
-		client.send({deviceToken:"12345", deviceType:"ios", message:"push message 29449"}, function(err, result){
-			assert.equal(result.service, "pushwoosh");
-			assert.equal(Object.keys(client.services).length, 1);
-			done()
-		})
-	})
-
 })
