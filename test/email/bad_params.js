@@ -14,6 +14,7 @@ describe('bad email parameters', function(){
 			should.exist(err);
 			should.not.exist(result);
 			err.code.should.equal(UserCodes.INVALID);
+			err.message.should.equal('Invalid "to" email address: bob');
 			done()
 			})
 		})
@@ -24,6 +25,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid "to" email address: undefined');
 				done()
 			})
 		})
@@ -34,6 +36,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid "to" email address: null');
 				done()
 			})
 		})
@@ -44,6 +47,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid "to" email address: undefined');
 				done()
 			})
 		})
@@ -54,6 +58,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid "to" email address: ');
 				done()
 			})
 		})
@@ -67,6 +72,7 @@ describe('bad email parameters', function(){
 			should.exist(err);
 			should.not.exist(result);
 			err.code.should.equal(UserCodes.INVALID);
+			err.message.should.equal('Invalid "from" email address: bob');
 			done()
 			})
 		})
@@ -77,6 +83,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid "from" email address: undefined');
 				done()
 			})
 		})
@@ -87,6 +94,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid "from" email address: null');
 				done()
 			})
 		})
@@ -97,6 +105,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid "from" email address: undefined');
 				done()
 			})
 		})
@@ -107,6 +116,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid "from" email address: ');
 				done()
 			})
 		})
@@ -120,6 +130,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid subject: undefined');
 				done()
 			})
 		})
@@ -130,6 +141,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid subject: null');
 				done()
 			})
 		})
@@ -140,6 +152,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid subject: undefined');
 				done()
 			})
 		})
@@ -150,6 +163,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid subject: ');
 				done()
 			})
 		})
@@ -163,6 +177,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid message: undefined');
 				done()
 			})
 		})
@@ -173,6 +188,7 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid message: null');
 				done()
 			})
 		})
@@ -183,16 +199,18 @@ describe('bad email parameters', function(){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid message: undefined');
 				done()
 			})
 		})
 
 		it('should show error if message is an empty string', function(done){
 			client.initialize()
-			client.send({to: "to@email.com", from: "from@email.com", subject: "", message:""}, function(err, result){
+			client.send({to: "to@email.com", from: "from@email.com", subject: "subject", message:""}, function(err, result){
 				should.exist(err);
 				should.not.exist(result);
 				err.code.should.equal(UserCodes.INVALID);
+				err.message.should.equal('Invalid message: ');
 				done()
 			})
 		})

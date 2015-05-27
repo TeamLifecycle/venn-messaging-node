@@ -29,6 +29,7 @@ describe('Postmark errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.SERVICE_DOWN);
 			assert.equal(err[0].service, 'postmark');
 			assert.equal(err[0].message, '500: Internal Server Error');
@@ -44,6 +45,7 @@ describe('Postmark errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.DATA_REJECTED);
 			assert.equal(err[0].service, 'postmark');
 			assert.equal(err[0].message, '400: Sender Signature not found');
@@ -59,6 +61,7 @@ describe('Postmark errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.DATA_REJECTED);
 			assert.equal(err[0].service, 'postmark');
 			assert.equal(err[0].message, '401: Sender signature not confirmed');
@@ -74,6 +77,7 @@ describe('Postmark errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
 			assert.equal(err[0].service, 'postmark');
 			assert.equal(err[0].message, '405: Not allowed to send');
@@ -89,6 +93,7 @@ describe('Postmark errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.DATA_REJECTED);
 			assert.equal(err[0].service, 'postmark');
 			assert.equal(err[0].message, '406: Inactive recipient');
@@ -104,6 +109,7 @@ describe('Postmark errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.DATA_REJECTED);
 			assert.equal(err[0].service, 'postmark');
 			assert.equal(err[0].message, '507: You do not own this Sender Signature');
@@ -119,6 +125,7 @@ describe('Postmark errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.DATA_REJECTED);
 			assert.equal(err[0].service, 'postmark');
 			assert.equal(err[0].message, '522: Value for field is invalid.');

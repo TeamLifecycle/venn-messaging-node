@@ -12,6 +12,7 @@ describe('when sms services up', function(){
 			should.exist(err);
 			should.not.exist(result);
 			err.code.should.equal(UserCodes.INVALID);
+			err.message.should.equal('Invalid "to" phone number: 5138853322');
 			done()
 		})
 	})

@@ -31,6 +31,7 @@ describe('send with twilio', function () {
 
 		client.initialize()
 		client.send({to:"15138853322", message:"message-13579"}, function(err, result){
+			assert.notEqual(result, undefined);
 			assert.equal(result.service, "twilio");
 			assert.equal(Object.keys(client.services).length, 2);
 			done()
@@ -63,6 +64,7 @@ describe('send with twilio', function () {
 
 		client.initialize()
 		client.send({to:"15138853322", from: "15134552211", message:"message-13579"}, function(err, result){
+			assert.notEqual(result, undefined);
 			assert.equal(result.service, "twilio");
 			assert.equal(Object.keys(client.services).length, 2);
 			done()

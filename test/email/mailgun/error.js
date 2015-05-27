@@ -31,6 +31,7 @@ describe('Mailgun errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.DATA_REJECTED);
 			assert.equal(err[0].service, 'mailgun');
 			assert.equal(err[0].message, 'Bad Request - Often missing a required parameter');
@@ -47,6 +48,7 @@ describe('Mailgun errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.DATA_REJECTED);
 			assert.equal(err[0].service, 'mailgun');
 			assert.equal(err[0].message, 'Unauthorized - No valid API key provided');
@@ -63,6 +65,7 @@ describe('Mailgun errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
 			assert.equal(err[0].service, 'mailgun');
 			assert.equal(err[0].message, 'Request Failed - Parameters were valid but request failed');
@@ -79,6 +82,7 @@ describe('Mailgun errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
 			assert.equal(err[0].service, 'mailgun');
 			assert.equal(err[0].message, 'Message limit reached.');
@@ -95,6 +99,7 @@ describe('Mailgun errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.DATA_REJECTED);
 			assert.equal(err[0].service, 'mailgun');
 			assert.equal(err[0].message, 'Not Found - The requested item doesn’t exist');
@@ -111,6 +116,7 @@ describe('Mailgun errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.SERVICE_DOWN);
 			assert.equal(err[0].service, 'mailgun');
 			assert.equal(err[0].message, 'Server Errors - something is wrong on Mailgun’s end');
@@ -127,6 +133,7 @@ describe('Mailgun errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.SERVICE_DOWN);
 			assert.equal(err[0].service, 'mailgun');
 			assert.equal(err[0].message, 'Server Errors - something is wrong on Mailgun’s end');
@@ -143,6 +150,7 @@ describe('Mailgun errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.SERVICE_DOWN);
 			assert.equal(err[0].service, 'mailgun');
 			assert.equal(err[0].message, 'Server Errors - something is wrong on Mailgun’s end');
@@ -159,6 +167,7 @@ describe('Mailgun errors', function () {
 		client.send({from:"from@email.com", to:"testy@email.com", subject:"subject-1", message:"message-1"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.SERVICE_DOWN);
 			assert.equal(err[0].service, 'mailgun');
 			assert.equal(err[0].message, 'Server Errors - something is wrong on Mailgun’s end');

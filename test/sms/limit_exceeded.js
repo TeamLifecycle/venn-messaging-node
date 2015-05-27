@@ -27,6 +27,7 @@ describe('sms services should provide feedback when user exceeds sending limit',
 		client.send({from:"15138853322", to:"15138853322", message:"message-13579"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCode.LIMIT_EXCEEDED);
 			done()
 		})

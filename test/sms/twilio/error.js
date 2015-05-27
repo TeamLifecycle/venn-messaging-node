@@ -6,7 +6,7 @@ var MessagingServiceStatus = require('../../../lib/models/messaging_service_stat
 var StatusCodes = (new MessagingServiceStatus()).StatusCodes;
 var UserCodes = (new MessagingUserStatus()).StatusCodes;
 
-describe('receive error from twilio', function () {
+describe('Twilio errors', function () {
 
 	it('when no from number in code nor database', function (done) {
 		nock.cleanAll()
@@ -70,6 +70,7 @@ describe('receive error from twilio', function () {
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
 			assert.equal(err.code, UserCodes.INVALID);
+			assert.equal(err.message, 'Invalid "to" phone number: 15138853322923042903432');
 			done()
 		})
 	})
@@ -103,6 +104,7 @@ describe('receive error from twilio', function () {
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
 			assert.equal(err.code, UserCodes.INVALID);
+			assert.equal(err.message, 'Invalid "from" phone number: 2309423098493840923');
 			done()
 		})
 	})
@@ -128,6 +130,7 @@ describe('receive error from twilio', function () {
 		client.send({to:"15135549122", from: "12345678900", message:"message-13579"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCodes.DATA_REJECTED);
 			done()
 		})
@@ -154,6 +157,7 @@ describe('receive error from twilio', function () {
 		client.send({to:"10142849070", from: "15135549122", message:"message-13579"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCodes.DATA_REJECTED);
 			done()
 		})
@@ -180,6 +184,7 @@ describe('receive error from twilio', function () {
 		client.send({to:"10142849070", from: "15135549122", message:"message-13579"}, function(err, result){
 			assert.notEqual(err, undefined);
 			assert.equal(result, undefined);
+			assert.notEqual(err[0], undefined);
 			assert.equal(err[0].code, StatusCodes.DATA_REJECTED);
 			done()
 		})
