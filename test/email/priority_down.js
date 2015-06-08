@@ -1,6 +1,6 @@
 var assert = require("assert")
 var nock = require("nock")
-var emailClient = require("../../lib/index").Email;
+var emailClient = require("../../lib/index")().Email;
 var env = process.env
 
 describe('email should still send even if priority endpoint down', function(){
