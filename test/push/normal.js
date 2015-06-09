@@ -1,6 +1,6 @@
 var assert = require("assert")
 var nock = require("nock")
-var client = require("../../lib/index").Push;
+var client = require("../../lib/index")().Push;
 
 describe('when push services up', function(){
 

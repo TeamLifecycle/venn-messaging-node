@@ -1,6 +1,6 @@
 var assert = require("assert")
 var should = require("chai").should()
-var client = require("../../lib/index").Push;
+var client = require("../../lib/index")().Push;
 var MessagingUserStatus = require('../../lib/models/messaging_user_status');
 var UserCodes = (new MessagingUserStatus()).StatusCodes;
 

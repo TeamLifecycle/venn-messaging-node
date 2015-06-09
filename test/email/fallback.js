@@ -1,6 +1,6 @@
 var assert = require("assert")
 var nock = require("nock")
-var emailClient = require("../../lib/index").Email;
+var emailClient = require("../../lib/index")().Email;
 
 describe('sending an email', function(){
 
