@@ -1,6 +1,6 @@
 var assert = require("assert")
 var nock = require("nock")
-var client = require("../../lib/index").SMS;
+var client = require("../../lib/index")().SMS;
 var MessagingServiceStatus = require('../../lib/models/messaging_service_status');
 var StatusCode = (new MessagingServiceStatus()).StatusCodes;
 

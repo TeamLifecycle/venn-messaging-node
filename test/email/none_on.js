@@ -1,6 +1,6 @@
 var assert = require("assert")
 var nock = require("nock")
-var emailClient = require("../../lib/index").Email;
+var emailClient = require("../../lib/index")().Email;
 var should = require("chai").should()
 
 describe('when one doesnt have any services turned on', function(){
