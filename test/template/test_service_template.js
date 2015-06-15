@@ -16,7 +16,7 @@ var MessagingServiceStatus = require('../../lib/models/messaging_service_status'
 var StatusCode = (new MessagingServiceStatus()).StatusCodes;
 
 /*
-Require the specific Venn service type being tested (Email, SMS, or Push)
+Require the specific Venn service type being tested (Email, SMS, Push, or Postal)
 
 var client = require("../../../lib/index").[ServiceType];
 */
