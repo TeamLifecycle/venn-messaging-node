@@ -157,7 +157,7 @@ describe('Lob errors', function () {
 
 				nock('https://api.lob.com')
 					.post('/v1/letters')
-					.reply(422, {'status_code': 422, 'message': 'TODO: Find out what this message should be!'});
+					.reply(422, {'error': {'status_code': 422, 'message': 'address_line1 is required'}});
 
 				client.initialize()
 				client.send(letter, function(err, result) {
@@ -169,7 +169,7 @@ describe('Lob errors', function () {
 					should.exist(err[0].message);
 					err[0].service.should.equal('lob');
 					err[0].code.should.equal(StatusCode.DATA_REJECTED);
-					err[0].message.should.equal('TODO: Find out what this message should be!');
+					err[0].message.should.equal('address_line1 is required');
 					done()
 				})
 			})
@@ -208,7 +208,7 @@ describe('Lob errors', function () {
 
 				nock('https://api.lob.com')
 					.post('/v1/letters')
-					.reply(422, {'status_code': 422, 'message': 'TODO: Find out what this message should be!'});
+					.reply(422, {'error': {'status_code': 422, 'message': 'address_line1 is required'}});
 
 				client.initialize()
 				client.send(letter, function(err, result) {
@@ -220,7 +220,7 @@ describe('Lob errors', function () {
 					should.exist(err[0].message);
 					err[0].service.should.equal('lob');
 					err[0].code.should.equal(StatusCode.DATA_REJECTED);
-					err[0].message.should.equal('TODO: Find out what this message should be!');
+					err[0].message.should.equal('address_line1 is required');
 					done()
 				})
 			})
@@ -260,7 +260,7 @@ describe('Lob errors', function () {
 
 				nock('https://api.lob.com')
 					.post('/v1/letters')
-					.reply(422, {'status_code': 422, 'message': 'TODO: Find out what this message should be!'});
+					.reply(422, {'error': {'status_code': 422, 'message': 'color must be a boolean'}});
 
 				client.initialize()
 				client.send(letter, function(err, result) {
@@ -272,7 +272,7 @@ describe('Lob errors', function () {
 					should.exist(err[0].message);
 					err[0].service.should.equal('lob');
 					err[0].code.should.equal(StatusCode.DATA_REJECTED);
-					err[0].message.should.equal('TODO: Find out what this message should be!');
+					err[0].message.should.equal('color must be a boolean');
 					done()
 				})
 			})
@@ -312,7 +312,7 @@ describe('Lob errors', function () {
 
 				nock('https://api.lob.com')
 					.post('/v1/letters')
-					.reply(422, {'status_code': 422, 'message': 'TODO: Find out what this message should be!'});
+					.reply(422, {'error': {'status_code': 422, 'message': 'Error downloading file from URL'}});
 
 				client.initialize()
 				client.send(letter, function(err, result) {
@@ -324,65 +324,13 @@ describe('Lob errors', function () {
 					should.exist(err[0].message);
 					err[0].service.should.equal('lob');
 					err[0].code.should.equal(StatusCode.DATA_REJECTED);
-					err[0].message.should.equal('TODO: Find out what this message should be!');
+					err[0].message.should.equal('Error downloading file from URL');
 					done()
 				})
 			})
 		})
 
 		describe('Invalid optional fields', function () {
-
-			it('should catch an invalid variables object', function (done) {
-
-				var letter = {
-					to: {
-						name: 'Harry Zhang',
-						address_line1: '123 Test Street',
-				        address_city: 'Mountain View',
-				        address_state: 'CA',
-				        address_zip: '94041',
-				        address_country: 'US'
-					},
-					from: {
-						name: 'Ami Wang',
-						address_line1: '123 Test Avenue',
-				        address_city: 'Mountain View',
-				        address_state: 'CA',
-				        address_zip: '94041',
-				        address_country: 'US'
-					},
-					file: "<html style='padding-top': 3in; 'margin': .5in;>HTML Letter for {{name}}</html>",
-					variables: {
-						// No name variable given
-					},
-					color: false,
-					description: 'Zhang-Wang pudding tang',
-					extra_service: 'certified',
-					double_sided: true,
-					template: true,
-					metadata: {
-						campaign: 'Hungry Hungry Hippo'
-					}
-				};
-
-				nock('https://api.lob.com')
-					.post('/v1/letters')
-					.reply(422, {'status_code': 422, 'message': 'TODO: Find out what this message should be!'});
-
-				client.initialize()
-				client.send(letter, function(err, result) {
-					should.not.exist(result);
-					should.exist(err);
-					err.length.should.equal(1);
-					should.exist(err[0].service);
-					should.exist(err[0].code);
-					should.exist(err[0].message);
-					err[0].service.should.equal('lob');
-					err[0].code.should.equal(StatusCode.DATA_REJECTED);
-					err[0].message.should.equal('TODO: Find out what this message should be!');
-					done()
-				})
-			})
 
 			it('should catch an invalid extra_service', function (done) {
 
@@ -419,7 +367,7 @@ describe('Lob errors', function () {
 
 				nock('https://api.lob.com')
 					.post('/v1/letters')
-					.reply(422, {'status_code': 422, 'message': 'TODO: Find out what this message should be!'});
+					.reply(422, {'error': {'status_code': 422, 'message': 'certified, registered'}});
 
 				client.initialize()
 				client.send(letter, function(err, result) {
@@ -431,7 +379,7 @@ describe('Lob errors', function () {
 					should.exist(err[0].message);
 					err[0].service.should.equal('lob');
 					err[0].code.should.equal(StatusCode.DATA_REJECTED);
-					err[0].message.should.equal('TODO: Find out what this message should be!');
+					err[0].message.should.equal('certified, registered');
 					done()
 				})
 			})
@@ -471,7 +419,7 @@ describe('Lob errors', function () {
 
 				nock('https://api.lob.com')
 					.post('/v1/letters')
-					.reply(422, {'status_code': 422, 'message': 'TODO: Find out what this message should be!'});
+					.reply(422, {'error': {'status_code': 422, 'message': 'double_sided must be a boolean'}});
 
 				client.initialize()
 				client.send(letter, function(err, result) {
@@ -483,7 +431,7 @@ describe('Lob errors', function () {
 					should.exist(err[0].message);
 					err[0].service.should.equal('lob');
 					err[0].code.should.equal(StatusCode.DATA_REJECTED);
-					err[0].message.should.equal('TODO: Find out what this message should be!');
+					err[0].message.should.equal('double_sided must be a boolean');
 					done()
 				})
 			})
@@ -523,7 +471,7 @@ describe('Lob errors', function () {
 
 				nock('https://api.lob.com')
 					.post('/v1/letters')
-					.reply(422, {'status_code': 422, 'message': 'TODO: Find out what this message should be!'});
+					.reply(422, {'error': {'status_code': 422, 'message': 'template must be a boolean'}});
 
 				client.initialize()
 				client.send(letter, function(err, result) {
@@ -535,7 +483,7 @@ describe('Lob errors', function () {
 					should.exist(err[0].message);
 					err[0].service.should.equal('lob');
 					err[0].code.should.equal(StatusCode.DATA_REJECTED);
-					err[0].message.should.equal('TODO: Find out what this message should be!');
+					err[0].message.should.equal('template must be a boolean');
 					done()
 				})
 			})
@@ -596,7 +544,7 @@ describe('Lob errors', function () {
 
 				nock('https://api.lob.com')
 					.post('/v1/letters')
-					.reply(422, {'status_code': 422, 'message': 'TODO: Find out what this message should be!'});
+					.reply(422, {'error': {'status_code': 422, 'message': 'metadata must have less than or equal to 20 children'}});
 
 				client.initialize()
 				client.send(letter, function(err, result) {
@@ -608,7 +556,7 @@ describe('Lob errors', function () {
 					should.exist(err[0].message);
 					err[0].service.should.equal('lob');
 					err[0].code.should.equal(StatusCode.DATA_REJECTED);
-					err[0].message.should.equal('TODO: Find out what this message should be!');
+					err[0].message.should.equal('metadata must have less than or equal to 20 children');
 					done()
 				})
 			})
@@ -648,7 +596,7 @@ describe('Lob errors', function () {
 
 				nock('https://api.lob.com')
 					.post('/v1/letters')
-					.reply(500, {'status_code': 500, 'message': 'TODO: Find out what this message should be!'});
+					.reply(500, {'error': {'status_code': 500, 'message': "Something is wrong on Lob's end"}});
 
 				client.initialize()
 				client.send(letter, function(err, result) {
@@ -660,7 +608,7 @@ describe('Lob errors', function () {
 					should.exist(err[0].message);
 					err[0].service.should.equal('lob');
 					err[0].code.should.equal(StatusCode.SERVICE_DOWN);
-					err[0].message.should.equal('TODO: Find out what this message should be!');
+					err[0].message.should.equal("Something is wrong on Lob's end");
 					done()
 				})
 			})
