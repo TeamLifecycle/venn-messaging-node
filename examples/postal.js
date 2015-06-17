@@ -1,4 +1,4 @@
-var Postal = require("../lib/index").Postal;
+var Postal = require("../lib/index")().Postal;
 
 Postal.initialize()
 var letter = {
@@ -61,6 +61,33 @@ var letter = {
 	metadata: {
 		campaign: 'Hungry Hungry Hippo'
 	}
+};
+client.send(letter, function (err, result) {
+	console.log('postal err: ', err);
+	console.log('postal result: ', result);
+})*/
+
+/*var TryPaper = require('../lib/models/providers/postal/trypaper');
+var client = new TryPaper({'api_key': 'TPTESTB1294DA3E3710F695B489B7E30'});
+
+client.initialize();
+var letter = {
+	to: {
+		"Name": "John Smith",
+	    "Organization": "ACME, Inc.",
+	    "AddressLineOne": "123 Any Street",
+	    "AddressLineTwo": "Suite 789",
+	    "City": "Anytown",
+	    "Province": "WA",
+	    "PostalCode": "12345",
+	    "Country": "US"
+	},
+	from: '123_Test_St_Fake',
+	file: "http://i.trypaper.com/pub/MacroniAndCheeseReference.pdf",
+	tags: ["duplex", "force_bw"],
+	HIPAASensitive: false,
+	batchId: "Feb 2013 Invoices",
+	id: "random_id_string"
 };
 client.send(letter, function (err, result) {
 	console.log('postal err: ', err);
