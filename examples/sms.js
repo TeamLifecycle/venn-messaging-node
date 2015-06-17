@@ -1,4 +1,4 @@
-var SMS = require("../lib/index").SMS;
+var SMS = require("../lib/index")().SMS;
 
 SMS.initialize()
 var data = {
