@@ -1,5 +1,5 @@
 var debug = require('debug')('venn');
-var Email = require("../lib/index").Email;
+var Email = require("../lib/index")().Email;
 
 Email.initialize()
 var data = {

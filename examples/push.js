@@ -1,4 +1,4 @@
-var Push = require("../lib/index").Push;
+var Push = require("../lib/index")().Push;
 
 Push.initialize()
 var data = {
