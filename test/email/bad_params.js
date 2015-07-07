@@ -76,50 +76,6 @@ describe('bad email parameters', function(){
 			done()
 			})
 		})
-
-		it('should show error if "from" email address is missing', function(done){
-			client.initialize()
-			client.send({to: "to@email.com", subject: "subject 321", message:"message-13579"}, function(err, result){
-				should.exist(err);
-				should.not.exist(result);
-				err.code.should.equal(UserCodes.INVALID);
-				err.message.should.equal('Invalid "from" email address: undefined');
-				done()
-			})
-		})
-
-		it('should show error if "from" email address is null', function(done){
-			client.initialize()
-			client.send({to: "to@email.com", from: null, subject: "subject 321", message:"message-13579"}, function(err, result){
-				should.exist(err);
-				should.not.exist(result);
-				err.code.should.equal(UserCodes.INVALID);
-				err.message.should.equal('Invalid "from" email address: null');
-				done()
-			})
-		})
-
-		it('should show error if "from" email address is undefined', function(done){
-			client.initialize()
-			client.send({to: "to@email.com", from: undefined, subject: "subject 321", message:"message-13579"}, function(err, result){
-				should.exist(err);
-				should.not.exist(result);
-				err.code.should.equal(UserCodes.INVALID);
-				err.message.should.equal('Invalid "from" email address: undefined');
-				done()
-			})
-		})
-
-		it('should show error if "from" email address is an empty string', function(done){
-			client.initialize()
-			client.send({to: "to@email.com", from: '', subject: "subject 321", message:"message-13579"}, function(err, result){
-				should.exist(err);
-				should.not.exist(result);
-				err.code.should.equal(UserCodes.INVALID);
-				err.message.should.equal('Invalid "from" email address: ');
-				done()
-			})
-		})
 	})
 
 	describe('subject', function () {
