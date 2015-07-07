@@ -1,6 +1,6 @@
 {
   "name": "venn-messaging",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "description": "Venn Messaging Redundancy Package, including Push Notifications, Email and SMS",
   "main": "lib/index.js",
