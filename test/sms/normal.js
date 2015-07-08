@@ -59,7 +59,7 @@ describe('when sms services up', function(){
 			});
 		nock('https://rest.nexmo.com')
 			.post('/sms/json?from=15139453300&to=15138853322&text=message-13579&api_key=nsldkfjdslkjf&api_secret=nsldkfjdslkjf')
-			.reply(200, {"message": "success"});
+			.reply(200, {"message-count": "1", "messages": [{"status": "0", "to": "11234567890", "message-id": "duck_hunt"}]});
 		nock('https://api.getvenn.io/v1')
 			.get('/priority/sms')
 			.reply(200, ["nexmo", "twilio"]);
