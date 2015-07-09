@@ -1,0 +1,68 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   '../venn-messaging' ]
+2 info using npm@2.11.1
+3 info using node@v0.12.0
+4 verbose node symlink /usr/local/bin/node
+5 verbose install initial load of /Users/timgiblin/Dropbox/Code/venn-messaging-node/package.json
+6 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/async/package.json
+7 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/chai/package.json
+8 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/debug/package.json
+9 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/easynexmo/package.json
+10 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/gulp/package.json
+11 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/gulp-bump/package.json
+12 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/mailgun-js/package.json
+13 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/mandrill-api/package.json
+14 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/messagebus/package.json
+15 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/mocha/package.json
+16 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/nock/package.json
+17 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/node-parse-api/package.json
+18 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/nzero-push/package.json
+19 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/plivo-node/package.json
+20 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/postmark/package.json
+21 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/promise/package.json
+22 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/pushwoosh-client/package.json
+23 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/q/package.json
+24 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/request/package.json
+25 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/sendgrid/package.json
+26 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/twilio/package.json
+27 verbose installManyTop reading scoped package data from /Users/timgiblin/Dropbox/Code/venn-messaging-node/node_modules/underscore/package.json
+28 info package.json mandrill-api@1.0.41 No license field.
+29 info package.json q@1.2.0 license should be a valid SPDX license expression
+30 info package.json sendgrid@1.6.0 No license field.
+31 info package.json async@0.9.0 No license field.
+32 info package.json gulp@3.8.11 No license field.
+33 info package.json gulp-bump@0.3.0 No license field.
+34 info package.json messagebus@5.0.0 No license field.
+35 info package.json node-parse-api@0.3.5 No license field.
+36 info package.json mocha@2.2.1 No license field.
+37 info package.json twilio@2.0.0 No license field.
+38 info package.json postmark@1.0.0 No license field.
+39 info package.json easynexmo@0.6.2 No license field.
+40 verbose readDependencies loading dependencies from /Users/timgiblin/Dropbox/Code/venn-messaging-node/package.json
+41 silly cache add args [ '../venn-messaging', null ]
+42 verbose cache add spec ../venn-messaging
+43 silly cache add parsed spec { raw: '../venn-messaging',
+43 silly cache add   scope: null,
+43 silly cache add   name: null,
+43 silly cache add   rawSpec: '../venn-messaging',
+43 silly cache add   spec: '/Users/timgiblin/Dropbox/Code/venn-messaging',
+43 silly cache add   type: 'local' }
+44 error addLocal Could not install /Users/timgiblin/Dropbox/Code/venn-messaging
+45 verbose stack Error: ENOENT, open '/Users/timgiblin/Dropbox/Code/venn-messaging'
+45 verbose stack     at Error (native)
+46 verbose cwd /Users/timgiblin/Dropbox/Code/venn-messaging-node
+47 error Darwin 14.3.0
+48 error argv "node" "/usr/local/bin/npm" "install" "--save" "../venn-messaging"
+49 error node v0.12.0
+50 error npm  v2.11.1
+51 error path /Users/timgiblin/Dropbox/Code/venn-messaging
+52 error code ENOENT
+53 error errno -2
+54 error enoent ENOENT, open '/Users/timgiblin/Dropbox/Code/venn-messaging'
+54 error enoent This is most likely not a problem with npm itself
+54 error enoent and is related to npm not being able to find a file.
+55 verbose exit [ -2, true ]
