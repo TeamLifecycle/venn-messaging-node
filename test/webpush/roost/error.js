@@ -12,7 +12,7 @@ describe('Roost Errors', function () {
 
 		// Nock getting service api keys from Venn api
 		nock('https://api.getvenn.io/v1')
-			.get('/keys/WebPush')
+			.get('/keys/webpush')
 			.reply(200, {
 			"roost": {
 				"api_key": "key",
@@ -22,7 +22,7 @@ describe('Roost Errors', function () {
 
 		// Nock returning the priority of all "on" services of the same type
 		nock('https://api.getvenn.io/v1')
-			.get('/priority/WebPush')
+			.get('/priority/webpush')
 			.reply(200, ["roost"]);
 
 		done();
