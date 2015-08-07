@@ -28,7 +28,7 @@ describe('Roost Errors', function () {
 		done();
 	})
 
-	it('should catch bad authorization', function (done) {
+	it.skip('should catch bad authorization', function (done) {
 
 		nock('https://api.goroost.com')
 			.post('/api/push')

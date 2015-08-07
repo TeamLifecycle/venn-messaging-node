@@ -28,7 +28,7 @@ describe('Roost Normal Behavior', function () {
 		done();
 	})
 
-	it('should send a web push notification', function (done) {
+	it.skip('should send a web push notification', function (done) {
 
 		nock('https://api.goroost.com')
 			.post('/api/push')
