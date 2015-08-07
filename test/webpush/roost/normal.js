@@ -2,7 +2,7 @@ var nock 					= require("nock")
 var assert 					= require("assert")
 var MessagingServiceStatus 	= require('../../../lib/models/messaging_service_status');
 var StatusCode 				= (new MessagingServiceStatus()).StatusCodes;
-var client 					= require("../../../lib/index").WebPush
+var client 					= require("../../../lib/index")().WebPush
 
 describe('Roost Normal Behavior', function () {
 
