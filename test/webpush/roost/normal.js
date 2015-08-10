@@ -1,8 +1,8 @@
-var nock 					= require("nock")
-var assert 					= require("assert")
-var MessagingServiceStatus 	= require('../../../lib/models/messaging_service_status');
-var StatusCode 				= (new MessagingServiceStatus()).StatusCodes;
-var client 					= require("../../../lib/index")().WebPush
+var nock 					= require("nock"),
+	assert 					= require("assert"),
+	MessagingServiceStatus 	= require('../../../lib/models/messaging_service_status'),
+	StatusCode 				= (new MessagingServiceStatus()).StatusCodes,
+	client 					= require("../../../lib/index")().WebPush;
 
 describe('Roost Normal Behavior', function () {
 
@@ -28,7 +28,7 @@ describe('Roost Normal Behavior', function () {
 		done();
 	})
 
-	it.skip('should send a web push notification', function (done) {
+	it('should send a web push notification', function (done) {
 
 		nock('https://api.goroost.com')
 			.post('/api/push')
@@ -38,16 +38,18 @@ describe('Roost Normal Behavior', function () {
 				'notification_id': 'id'
 			});
 
-		client.initialize()
-		client.send({'alert': 'Web Push Title', 'url': 'https://www.my.url'}, function(err, result) {
+		client.initialize();
+		client.send({'message': 'Web Push Title', 'url': 'https://www.my.url'}, function(err, result) {
 		
 			assert.equal(err, undefined);
 			assert.notEqual(result, undefined);
 			assert.equal(result.service, 'roost');
+			assert.equal(this.sendLog.length, 1);
+			assert.equal(this.sendLog[0].code, StatusCode.SUCCESS);
+			assert.equal(this.sendLog[0].service, 'roost');
+			assert.equal(this.sendLog[0].message, 'Notification Id: id. Push queued; will be sent to devices within the next few seconds.');
 
-			//TODO: other assertions
-
-			done()
-		})
-	})
-})
+			done();
+		});
+	});
+});
