@@ -41,11 +41,11 @@ describe('Roost Errors', function () {
 				assert.notEqual(err, undefined);
 				assert.equal(result, undefined);
 				assert.equal(err.code, UserCode.MISSING);
-				assert.equal(err.service, 'roost');
+				assert.equal(err.service, 'webpush validator');
 				assert.equal(err.message, '`message` key required.');
 				assert.equal(this.sendLog.length, 1);
 				assert.equal(this.sendLog[0].code, UserCode.MISSING);
-				assert.equal(this.sendLog[0].service, 'roost');
+				assert.equal(this.sendLog[0].service, 'webpush validator');
 				assert.equal(this.sendLog[0].message, '`message` key required.');
 
 				done();
@@ -60,11 +60,11 @@ describe('Roost Errors', function () {
 				assert.notEqual(err, undefined);
 				assert.equal(result, undefined);
 				assert.equal(err.code, UserCode.MISSING);
-				assert.equal(err.service, 'roost');
+				assert.equal(err.service, 'webpush validator');
 				assert.equal(err.message, '`url` key required.');
 				assert.equal(this.sendLog.length, 1);
 				assert.equal(this.sendLog[0].code, UserCode.MISSING);
-				assert.equal(this.sendLog[0].service, 'roost');
+				assert.equal(this.sendLog[0].service, 'webpush validator');
 				assert.equal(this.sendLog[0].message, '`url` key required.');
 
 				done();
